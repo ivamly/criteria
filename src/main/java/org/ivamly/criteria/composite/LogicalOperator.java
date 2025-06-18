@@ -1,6 +1,6 @@
 package org.ivamly.criteria.composite;
 
-public enum Operator {
+public enum LogicalOperator {
     AND,
     OR
 }

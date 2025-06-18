@@ -1,26 +1,25 @@
-CREATE SCHEMA IF NOT EXISTS PUBLIC;
+SET search_path TO public;
 
-CREATE TABLE IF NOT EXISTS REPORT (
-                                      ID UUID PRIMARY KEY,
-                                      NAME VARCHAR(255) NOT NULL
-    );
+CREATE TABLE IF NOT EXISTS report (
+                                      id UUID PRIMARY KEY,
+                                      name VARCHAR(255) NOT NULL
+);
 
-CREATE TABLE IF NOT EXISTS CRITERIA_GROUP (
-                                              ID UUID PRIMARY KEY,
-                                              CRITERIA_GROUP VARCHAR(255) NOT NULL,
-    REPORT_ID UUID UNIQUE,
-    FOREIGN KEY (REPORT_ID) REFERENCES REPORT(ID)
-    );
+CREATE TABLE IF NOT EXISTS criteria_group (
+                                              id UUID PRIMARY KEY,
+                                              criteria_group_data TEXT,
+                                              report_id UUID NOT NULL,
+                                              CONSTRAINT fk_criteria_group_report
+                                                  FOREIGN KEY (report_id) REFERENCES report(id)
+);
 
-CREATE TABLE IF NOT EXISTS CRITERIA (
-                                        ID UUID PRIMARY KEY,
-                                        NAME VARCHAR(255) NOT NULL,
-    REPORT_ID UUID NOT NULL,
-    CRITERIA_GROUP_ID UUID NOT NULL,
-    FOREIGN KEY (REPORT_ID) REFERENCES REPORT(ID),
-    FOREIGN KEY (CRITERIA_GROUP_ID) REFERENCES CRITERIA_GROUP(ID)
-    );
-
-ALTER TABLE REPORT ADD COLUMN IF NOT EXISTS CRITERIA_GROUP_ID UUID UNIQUE;
-ALTER TABLE REPORT ADD CONSTRAINT FK_REPORT_CRITERIA_GROUP
-    FOREIGN KEY (CRITERIA_GROUP_ID) REFERENCES CRITERIA_GROUP(ID);
+CREATE TABLE IF NOT EXISTS criteria (
+                                        id UUID PRIMARY KEY,
+                                        name VARCHAR(255) NOT NULL,
+                                        report_id UUID NOT NULL,
+                                        criteria_group_id UUID,
+                                        CONSTRAINT fk_criteria_report
+                                            FOREIGN KEY (report_id) REFERENCES report(id),
+                                        CONSTRAINT fk_criteria_criteria_group
+                                            FOREIGN KEY (criteria_group_id) REFERENCES criteria_group(id)
+);

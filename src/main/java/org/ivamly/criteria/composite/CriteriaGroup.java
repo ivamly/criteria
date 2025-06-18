@@ -1,13 +1,13 @@
 package org.ivamly.criteria.composite;
 
+import com.fasterxml.jackson.annotation.JsonTypeName;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class LogicalGroup extends CriteriaComponent {
+@JsonTypeName("group")
+public class CriteriaGroup implements Composite {
     private LogicalOperator logicalOperator;
-    private List<CriteriaComponent> criteriaComponents;
+    private List<Composite> composites;
 }
