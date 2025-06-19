@@ -1,37 +1,37 @@
 {
   "reportId": "550e8400-e29b-41d4-a716-446655440000",
-  "criteriaGroup": {
-    "type": "group",
+  "group": {
+    "type": "GROUP",
     "logicalOperator": "AND",
     "composites": [
       {
-        "type": "group",
+        "type": "GROUP",
         "logicalOperator": "AND",
         "composites": [
           {
-            "type": "criteria",
+            "type": "CRITERIA",
             "criteriaId": "550e8400-e29b-41d4-a716-446655440000"
           },
           {
-            "type": "criteria",
+            "type": "CRITERIA",
             "criteriaId": "550e8400-e29b-41d4-a716-446655440001"
           },
           {
-            "type": "criteria",
+            "type": "CRITERIA",
             "criteriaId": "550e8400-e29b-41d4-a716-446655440002"
           }
         ]
       },
       {
-        "type": "group",
+        "type": "GROUP",
         "logicalOperator": "OR",
         "composites": [
           {
-            "type": "criteria",
+            "type": "CRITERIA",
             "criteriaId": "550e8400-e29b-41d4-a716-446655440003"
           },
           {
-            "type": "criteria",
+            "type": "CRITERIA",
             "criteriaId": "550e8400-e29b-41d4-a716-446655440004"
           }
         ]
